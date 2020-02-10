@@ -64,8 +64,17 @@ def ice_2():
 
 
 # Кривая Леви
-def levi():
-    pass
+def levi(order, size):
+    if order == 0:
+        forward(size)
+
+    else:
+        left(45)
+        levi(order - 1, size / 1.5)
+        right(90)
+        levi(order - 1, size / 1.5)
+        left(45)
+
 
 
 # Дракон
@@ -110,7 +119,13 @@ def main():
         minkowski(deep, length)
 
     elif choice == '8':
-        levi()
+        order = int(input('Глубина: '))
+        size = int(input('Длина стороны: '))
+        up()
+        goto(-100, 0)
+        down()
+        levi(order, size)
+        done()
 
     elif choice == '9':
         dragon()
