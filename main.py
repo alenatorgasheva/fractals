@@ -23,15 +23,17 @@ def brunch():
     pass
 
 
-# Кривая Коха, снежинка Коха
+# Кривая Коха
 def koch():
     pass
 
 
+# Снежинка Коха
 def koch_snowflake():
     pass
 
 
+# Кривая Минковского
 def minkowski(deep, length):
     if deep == 0:
         forward(length)
@@ -72,7 +74,46 @@ def dragon():
 
 
 def main():
-    pass
+    print('Выберите фигуру из списка.')
+    print('\t1 - двоичное дерево')
+    print('\t2 - ветка')
+    print('\t3 - кривая Коха')
+    print('\t4 - снежинка Коха')
+    print('\t5 - ледяной фрактал 1')
+    print('\t6 - ледяной фрактал 2')
+    print('\t7 - кривая Минковского')
+    print('\t8 - кривая Леви')
+    print('\t9 - дракон')
+    choice = input()
+
+    if choice == '1':
+        tree()
+
+    elif choice == '2':
+        brunch()
+
+    elif choice == '3':
+        koch()
+
+    elif choice == '4':
+        koch_snowflake()
+
+    elif choice == '5':
+        ice_1()
+
+    elif choice == '6':
+        ice_2()
+
+    elif choice == '7':
+        deep = int(input('Глубина: '))
+        length = int(input('Длина стороны: '))
+        minkowski(deep, length)
+
+    elif choice == '8':
+        levi()
+
+    elif choice == '9':
+        dragon()
 
 
 main()
