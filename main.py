@@ -5,20 +5,70 @@
 
 # This program draws fractals.
 
-# ФИГУРЫ:
-#   1. Двоичное дерево (спрашивает высоту дерева и величину угла)
-#   2. Ветка (глубина рекурсии)
-#   3. Кривая Коха, снежинка Коха
-#   4. Ледяной фрактал 1
-#   5. Ледяной фрактал 2
-#   6. Кривая Леви
-#   7. Дракон
 # ОСТАЛЬНЫЕ ЗАДАЧИ:
 #   1. код ревью + комментарии
 #   2. меню программы (выбор фигуры и ее параметров)
 #   3. ?локализация
 
 from turtle import *
+
+
+# Двоичное дерево (спрашивает высоту дерева и величину угла)
+def tree():
+    pass
+
+
+# Ветка
+def brunch():
+    pass
+
+
+# Кривая Коха, снежинка Коха
+def koch():
+    pass
+
+
+def koch_snowflake():
+    pass
+
+
+def minkowski(deep, length):
+    if deep == 0:
+        forward(length)
+    else:
+        minkowski(deep - 1, length)
+        left(90)
+        minkowski(deep - 1, length)
+        right(90)
+        minkowski(deep - 1, length)
+        right(90)
+        minkowski(deep - 1, 2 * length)
+        left(90)
+        minkowski(deep - 1, length)
+        left(90)
+        minkowski(deep - 1, length)
+        right(90)
+        minkowski(deep - 1, length)
+
+
+# Ледяной фрактал 1
+def ice_1():
+    pass
+
+
+# Ледяной фрактал 2
+def ice_2():
+    pass
+
+
+# Кривая Леви
+def levi():
+    pass
+
+
+# Дракон
+def dragon():
+    pass
 
 
 def main():
