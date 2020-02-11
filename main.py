@@ -115,8 +115,17 @@ def ice_1_snowflake():
 
 
 # Ледяной фрактал 2
-def ice_2():
-    pass
+def ice_2(deep, length):
+    if deep == 0:
+        forward(length)
+    else:
+        ice_2(deep - 1, length)
+        left(90)
+        ice_2(deep - 1, length / 2)
+        left(180)
+        ice_2(deep - 1, length / 2)
+        left(90)
+        ice_2(deep - 1, length)
 
 
 # Ледяной фрактал 2, снежинка
@@ -197,13 +206,24 @@ def main():
         done()
 
     elif choice == '6':
-        ice_1()
+        deep = int(input('Глубина: '))
+        length = int(input('Длина стороны: '))
+        ice_1(deep, length)
+
 
     elif choice == '7':
         ice_1_snowflake()
 
     elif choice == '8':
-        ice_2()
+        color('midnightblue')
+        deep = int(input('Глубина: '))
+        length = int(input('Длина стороны: '))
+        up()
+        goto(-100, 0)
+        down()
+        ice_2(deep, length)
+        done()
+
 
     elif choice == '9':
         ice_2_snowflake()
