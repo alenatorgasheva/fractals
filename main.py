@@ -9,8 +9,15 @@ from turtle import *
 
 
 # Двоичное дерево (спрашивает высоту дерева и величину угла)
-def tree():
-    pass
+def tree(size, corner, order):
+    if size - size/order > 10:
+        forward(size)
+        right(corner/2)
+        tree(size - size/order, corner, order)
+        left(corner)
+        tree(size - size/order, corner, order)
+        right(corner/2)
+        backward(size)
 
 
 # Кривая Коха
@@ -112,9 +119,19 @@ def main():
     choice = input()
 
     if choice == '1':
-        tree()
+        order = 3
+        size = int(input('Длина ствола: '))
+        corner = int(input('Угол: '))
+        up()
+        goto(0, -100)
+        left(90)
+        down()
+        color('green')
+        tree(size, corner, order)
+        done()
 
     elif choice == '2':
+        color('red')
         order = int(input('Глубина: '))
         size = int(input('Длина стороны: '))
         up()
