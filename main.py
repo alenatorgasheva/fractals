@@ -45,29 +45,29 @@ def koch_snowflake(deep, length):
         koch(deep, length / 3)
         left(120)
     else:
-        koch(deep - 1, length / 3)
+        koch_snowflake(deep - 1, length / 3)
         left(60)
-        koch(deep - 1, length / 3)
+        koch_snowflake(deep - 1, length / 3)
         right(120)
-        koch(deep - 1, length / 3)
+        koch_snowflake(deep - 1, length / 3)
         left(60)
-        koch(deep - 1, length / 3)
+        koch_snowflake(deep - 1, length / 3)
         right(120)
-        koch(deep - 1, length / 3)
+        koch_snowflake(deep - 1, length / 3)
         left(60)
-        koch(deep - 1, length / 3)
+        koch_snowflake(deep - 1, length / 3)
         right(120)
-        koch(deep - 1, length / 3)
+        koch_snowflake(deep - 1, length / 3)
         left(60)
-        koch(deep - 1, length / 3)
+        koch_snowflake(deep - 1, length / 3)
         right(120)
-        koch(deep - 1, length / 3)
+        koch_snowflake(deep - 1, length / 3)
         left(60)
-        koch(deep - 1, length / 3)
+        koch_snowflake(deep - 1, length / 3)
         right(120)
-        koch(deep - 1, length / 3)
+        koch_snowflake(deep - 1, length / 3)
         left(60)
-        koch(deep - 1, length / 3)
+        koch_snowflake(deep - 1, length / 3)
 
 
 
@@ -129,8 +129,33 @@ def ice_2(deep, length):
 
 
 # Ледяной фрактал 2, снежинка
-def ice_2_snowflake():
-    pass
+def ice_2_snowflake(deep, length):
+    if deep == 0:
+        forward(length)
+    else:
+        ice_2_snowflake(deep - 1, length)
+        left(90)
+        ice_2_snowflake(deep - 1, length / 2)
+        left(180)
+        ice_2_snowflake(deep - 1, length / 2)
+        left(90)
+        ice_2_snowflake(deep - 1, length)
+        right(120)
+        ice_2_snowflake(deep - 1, length)
+        left(90)
+        ice_2_snowflake(deep - 1, length / 2)
+        left(180)
+        ice_2_snowflake(deep - 1, length / 2)
+        left(90)
+        ice_2_snowflake(deep - 1, length)
+        right(120)
+        ice_2_snowflake(deep - 1, length)
+        left(90)
+        ice_2_snowflake(deep - 1, length / 2)
+        left(180)
+        ice_2_snowflake(deep - 1, length / 2)
+        left(90)
+        ice_2_snowflake(deep - 1, length)
 
 
 # Кривая Леви
@@ -226,8 +251,14 @@ def main():
 
 
     elif choice == '9':
-        ice_2_snowflake()
-
+        color('midnightblue')
+        deep = int(input('Глубина: '))
+        length = int(input('Длина стороны: '))
+        up()
+        goto(-100, 0)
+        down()
+        ice_2_snowflake(deep, length)
+        done()
 
 main()
 done()
