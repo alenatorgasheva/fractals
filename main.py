@@ -36,8 +36,39 @@ def koch(deep, length):
 
 
 # Снежинка Коха
-def koch_snowflake():
-    pass
+def koch_snowflake(deep, length):
+    if deep == 0:
+        koch(deep, length / 3)
+        left(120)
+        koch(deep, length / 3)
+        left(120)
+        koch(deep, length / 3)
+        left(120)
+    else:
+        koch(deep - 1, length / 3)
+        left(60)
+        koch(deep - 1, length / 3)
+        right(120)
+        koch(deep - 1, length / 3)
+        left(60)
+        koch(deep - 1, length / 3)
+        right(120)
+        koch(deep - 1, length / 3)
+        left(60)
+        koch(deep - 1, length / 3)
+        right(120)
+        koch(deep - 1, length / 3)
+        left(60)
+        koch(deep - 1, length / 3)
+        right(120)
+        koch(deep - 1, length / 3)
+        left(60)
+        koch(deep - 1, length / 3)
+        right(120)
+        koch(deep - 1, length / 3)
+        left(60)
+        koch(deep - 1, length / 3)
+
 
 
 # Кривая Минковского
@@ -145,14 +176,25 @@ def main():
         length = int(input('Длина стороны: '))
         minkowski(deep, length)
 
-
     elif choice == '4':
+        color('deepskyblue')
         deep = int(input('Глубина: '))
         length = int(input('Длина стороны: '))
+        up()
+        goto(-100, 0)
+        down()
         koch(deep, length)
+        done()
 
     elif choice == '5':
-        koch_snowflake()
+        color('mediumturquoise')
+        deep = int(input('Глубина: '))
+        length = int(input('Длина стороны: '))
+        up()
+        goto(-100, 0)
+        down()
+        koch_snowflake(deep, length)
+        done()
 
     elif choice == '6':
         ice_1()
@@ -168,3 +210,4 @@ def main():
 
 
 main()
+done()
