@@ -14,8 +14,18 @@ def tree():
 
 
 # Кривая Коха
-def koch():
-    pass
+def koch(deep, length):
+    if deep == 0:
+        forward(length)
+    else:
+        koch(deep - 1, length / 3)
+        left(60)
+        koch(deep - 1, length / 3)
+        right(120)
+        koch(deep - 1, length / 3)
+        left(60)
+        koch(deep - 1, length / 3)
+
 
 
 # Снежинка Коха
@@ -118,8 +128,11 @@ def main():
         length = int(input('Длина стороны: '))
         minkowski(deep, length)
 
+
     elif choice == '4':
-        koch()
+        deep = int(input('Глубина: '))
+        length = int(input('Длина стороны: '))
+        koch(deep, length)
 
     elif choice == '5':
         koch_snowflake()
