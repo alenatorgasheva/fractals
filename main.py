@@ -128,34 +128,79 @@ def ice_2(deep, length):
         ice_2(deep - 1, length)
 
 
-# Ледяной фрактал 2, снежинка
-def ice_2_snowflake(deep, length):
+# Ледяной фрактал 2, снежинка(Вариант №1)
+def snowflake_2(deep, length):
     if deep == 0:
         forward(length)
     else:
-        ice_2_snowflake(deep - 1, length)
+        snowflake_2(deep - 1, length)
         left(90)
-        ice_2_snowflake(deep - 1, length / 2)
+        snowflake_2(deep - 1, length / 2)
         left(180)
-        ice_2_snowflake(deep - 1, length / 2)
+        snowflake_2(deep - 1, length / 2)
         left(90)
-        ice_2_snowflake(deep - 1, length)
-        right(120)
-        ice_2_snowflake(deep - 1, length)
+        snowflake_2(deep - 1, length)
+
+def ice_2_snowflake(deep, length):
+    snowflake_2(deep, length)
+    snowflake_2(deep, length)
+    right(180)
+    snowflake_2(deep, length)
+    right(45)
+    snowflake_2(deep, length)
+    right(180)
+    snowflake_2(deep, length)
+    snowflake_2(deep, length)
+    right(180)
+    snowflake_2(deep, length)
+    right(90)
+    snowflake_2(deep, length)
+    right(180)
+    snowflake_2(deep, length)
+    snowflake_2(deep, length)
+    right(180)
+    snowflake_2(deep, length)
+    left(45)
+    snowflake_2(deep, length)
+    right(180)
+    snowflake_2(deep, length)
+    snowflake_2(deep, length)
+    right(180)
+    snowflake_2(deep, length)
+    left(90)
+    snowflake_2(deep, length)
+
+
+# Ледяной фрактал 2, снежинка(Вариант №2)
+def snowflake_2_2(deep, length):
+    if deep == 0:
+        forward(length)
+    else:
+        snowflake_2_2(deep - 1, length)
         left(90)
-        ice_2_snowflake(deep - 1, length / 2)
+        snowflake_2_2(deep - 1, length / 2)
         left(180)
-        ice_2_snowflake(deep - 1, length / 2)
+        snowflake_2_2(deep - 1, length / 2)
         left(90)
-        ice_2_snowflake(deep - 1, length)
-        right(120)
-        ice_2_snowflake(deep - 1, length)
-        left(90)
-        ice_2_snowflake(deep - 1, length / 2)
-        left(180)
-        ice_2_snowflake(deep - 1, length / 2)
-        left(90)
-        ice_2_snowflake(deep - 1, length)
+        snowflake_2(deep - 1, length)
+
+def ice_2_snowflake_2(deep, length):
+    snowflake_2_2(deep, length)
+    right(90)
+    snowflake_2_2(deep, length)
+    right(90)
+    snowflake_2_2(deep, length)
+    right(90)
+    snowflake_2_2(deep, length)
+    right(180)
+    snowflake_2_2(deep, length)
+    left(90)
+    snowflake_2_2(deep, length)
+    left(90)
+    snowflake_2_2(deep, length)
+    left(90)
+    snowflake_2_2(deep, length)
+
 
 
 # Кривая Леви
@@ -180,7 +225,8 @@ def main():
     print('\t6 - ледяной фрактал 1')
     print('\t7 - ледяной фрактал 1, снежинка')
     print('\t8 - ледяной фрактал 2')
-    print('\t9 - ледяной фрактал 2, снежинка')
+    print('\t9 - ледяной фрактал 2, снежинка(1)')
+    print('\t10 - ледяной фрактал 2, снежинка(2)')
     choice = input()
 
     if choice == '1':
@@ -255,10 +301,19 @@ def main():
         deep = int(input('Глубина: '))
         length = int(input('Длина стороны: '))
         up()
-        goto(-100, 0)
+        goto(-250, 50)
         down()
         ice_2_snowflake(deep, length)
         done()
 
+    elif choice == '10':
+        color('midnightblue')
+        deep = int(input('Глубина: '))
+        length = int(input('Длина стороны: '))
+        up()
+        goto(-250, 50)
+        down()
+        ice_2_snowflake_2(deep, length)
+        done()
 main()
 done()
