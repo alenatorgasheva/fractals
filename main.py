@@ -8,15 +8,15 @@
 from turtle import *
 
 
-# Двоичное дерево (спрашивает высоту дерева и величину угла)
+# Двоичное дерево
 def tree(size, corner, order):
-    if size - size/order > 10:
+    if size - size / order > 10:
         forward(size)
-        right(corner/2)
-        tree(size - size/order, corner, order)
+        right(corner / 2)
+        tree(size - size / order, corner, order)
         left(corner)
-        tree(size - size/order, corner, order)
-        right(corner/2)
+        tree(size - size / order, corner, order)
+        right(corner / 2)
         backward(size)
 
 
@@ -32,7 +32,6 @@ def koch(deep, length):
         koch(deep - 1, length / 3)
         left(60)
         koch(deep - 1, length / 3)
-
 
 
 # Снежинка Коха
@@ -68,7 +67,6 @@ def koch_snowflake(deep, length):
         koch_snowflake(deep - 1, length / 3)
         left(60)
         koch_snowflake(deep - 1, length / 3)
-
 
 
 # Кривая Минковского
@@ -109,9 +107,32 @@ def ice_1(deep, length):
         ice_1(deep - 1, length)
 
 
-# Ледяной фрактал 1, снежинка
-def ice_1_snowflake():
-    pass
+# Ледяной фрактал 1, снежинка (1)
+def ice_1_snowflake_1(deep, length):
+    right(180)
+    ice_1(deep, length)
+    right(180)
+    ice_1(deep, length)
+    for _ in range(5):
+        left(120)
+        ice_1(deep, length)
+        right(180)
+        ice_1(deep, length)
+
+
+# Ледяной фрактал 1, снежинка (2)
+def ice_1_snowflake_2(deep, length):
+    ice_1(deep, length)
+    right(120)
+    ice_1(deep, length)
+    right(120)
+    ice_1(deep, length)
+    right(180)
+    ice_1(deep, length)
+    left(120)
+    ice_1(deep, length)
+    left(120)
+    ice_1(deep, length)
 
 
 # Ледяной фрактал 2
@@ -128,7 +149,7 @@ def ice_2(deep, length):
         ice_2(deep - 1, length)
 
 
-# Ледяной фрактал 2, снежинка(Вариант №1)
+# Ледяной фрактал 2, снежинка (1)
 def snowflake_2(deep, length):
     if deep == 0:
         forward(length)
@@ -140,6 +161,7 @@ def snowflake_2(deep, length):
         snowflake_2(deep - 1, length / 2)
         left(90)
         snowflake_2(deep - 1, length)
+
 
 def ice_2_snowflake(deep, length):
     snowflake_2(deep, length)
@@ -171,7 +193,7 @@ def ice_2_snowflake(deep, length):
     snowflake_2(deep, length)
 
 
-# Ледяной фрактал 2, снежинка(Вариант №2)
+# Ледяной фрактал 2, снежинка (2)
 def snowflake_2_2(deep, length):
     if deep == 0:
         forward(length)
@@ -183,6 +205,7 @@ def snowflake_2_2(deep, length):
         snowflake_2_2(deep - 1, length / 2)
         left(90)
         snowflake_2(deep - 1, length)
+
 
 def ice_2_snowflake_2(deep, length):
     snowflake_2_2(deep, length)
@@ -202,7 +225,6 @@ def ice_2_snowflake_2(deep, length):
     snowflake_2_2(deep, length)
 
 
-
 # Кривая Леви
 def levi(order, size):
     if order == 0:
@@ -218,16 +240,22 @@ def levi(order, size):
 def main():
     print('Выберите фигуру из списка.')
     print('\t1 - двоичное дерево')
-    print('\t2 - кривая Леви')
-    print('\t3 - кривая Минковского')
-    print('\t4 - кривая Коха')
-    print('\t5 - снежинка Коха')
-    print('\t6 - ледяной фрактал 1')
-    print('\t7 - ледяной фрактал 1, снежинка')
-    print('\t8 - ледяной фрактал 2')
-    print('\t9 - ледяной фрактал 2, снежинка(1)')
-    print('\t10 - ледяной фрактал 2, снежинка(2)')
+    print('\t2 - ветка')
+    print('\t3 - кривая Леви')
+    print('\t4 - кривая Минковского')
+    print('\t5 - кривая Коха')
+    print('\t6 - снежинка Коха')
+    print('\t7 - ледяной фрактал 1')
+    print('\t8 - ледяной фрактал 1, снежинка (1)')
+    print('\t9 - ледяной фрактал 1, снежинка (2)')
+    print('\t10 - ледяной фрактал 2')
+    print('\t11 - ледяной фрактал 2, снежинка (1)')
+    print('\t12 - ледяной фрактал 2, снежинка (2)')
     choice = input()
+    print('-' * 50)
+
+    speed(100)
+    width(1.5)
 
     if choice == '1':
         order = 3
@@ -242,6 +270,9 @@ def main():
         done()
 
     elif choice == '2':
+        pass
+
+    elif choice == '3':
         color('red')
         order = int(input('Глубина: '))
         size = int(input('Длина стороны: '))
@@ -251,12 +282,12 @@ def main():
         levi(order, size)
         done()
 
-    elif choice == '3':
+    elif choice == '4':
         deep = int(input('Глубина: '))
         length = int(input('Длина стороны: '))
         minkowski(deep, length)
 
-    elif choice == '4':
+    elif choice == '5':
         color('deepskyblue')
         deep = int(input('Глубина: '))
         length = int(input('Длина стороны: '))
@@ -266,7 +297,7 @@ def main():
         koch(deep, length)
         done()
 
-    elif choice == '5':
+    elif choice == '6':
         color('mediumturquoise')
         deep = int(input('Глубина: '))
         length = int(input('Длина стороны: '))
@@ -276,16 +307,35 @@ def main():
         koch_snowflake(deep, length)
         done()
 
-    elif choice == '6':
+    elif choice == '7':
         deep = int(input('Глубина: '))
         length = int(input('Длина стороны: '))
+        up()
+        goto(-length / 2, 0)
+        down()
         ice_1(deep, length)
 
-
-    elif choice == '7':
-        ice_1_snowflake()
-
     elif choice == '8':
+        color('midnightblue')
+        deep = int(input('Глубина: '))
+        length = int(input('Длина стороны: '))
+        up()
+        goto(-length, 0)
+        down()
+        ice_1_snowflake(deep, length)
+        done()
+
+    elif choice == '9':
+        color('midnightblue')
+        deep = int(input('Глубина: '))
+        length = int(input('Длина стороны: '))
+        up()
+        goto(-length, length)
+        down()
+        ice_1_snowflake_2(deep, length)
+        done()
+
+    elif choice == '10':
         color('midnightblue')
         deep = int(input('Глубина: '))
         length = int(input('Длина стороны: '))
@@ -295,8 +345,7 @@ def main():
         ice_2(deep, length)
         done()
 
-
-    elif choice == '9':
+    elif choice == '11':
         color('midnightblue')
         deep = int(input('Глубина: '))
         length = int(input('Длина стороны: '))
@@ -306,7 +355,7 @@ def main():
         ice_2_snowflake(deep, length)
         done()
 
-    elif choice == '10':
+    elif choice == '12':
         color('midnightblue')
         deep = int(input('Глубина: '))
         length = int(input('Длина стороны: '))
@@ -315,5 +364,7 @@ def main():
         down()
         ice_2_snowflake_2(deep, length)
         done()
+
+
 main()
 done()
