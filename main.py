@@ -8,14 +8,33 @@
 from turtle import *
 
 
+# Ветка
+def branch(size, n):
+    if n == 0:
+        left(180)
+        return
+
+    for i in range(1, n + 1):
+        forward(size / (n + 1))
+        left(45)
+        branch(((size / (n + 1)) / 2) * (n - i), n - i)
+        left(90)
+        branch(((size / (n + 1)) / 2) * (n - i), n - i)
+        right(135)
+
+    forward(size / (n + 1))
+    left(180)
+    forward(size)
+
+
 # Двоичное дерево
-def tree(size, corner, order):
-    if size - size / order > 10:
+def tree(size, corner):
+    if size - size / 3 > 10:
         forward(size)
         right(corner / 2)
-        tree(size - size / order, corner, order)
+        tree(size - size / 3, corner)
         left(corner)
-        tree(size - size / order, corner, order)
+        tree(size - size / 3, corner)
         right(corner / 2)
         backward(size)
 
@@ -255,34 +274,38 @@ def main():
     print('-' * 50)
 
     speed(100)
-    width(1.5)
 
     if choice == '1':
-        order = 3
         size = int(input('Длина ствола: '))
         corner = int(input('Угол: '))
         up()
-        goto(0, -100)
+        goto(0, -size*1.5)
         left(90)
         down()
         color('green')
-        tree(size, corner, order)
-        done()
+        tree(size, corner)
 
     elif choice == '2':
-        pass
+        size = int(input('Длина: '))
+        n = int(input('Глубина: '))
+        left(90)
+        color('sienna')
+        up()
+        goto(0, -size / 3)
+        down()
+        branch(size, n)
 
     elif choice == '3':
-        color('red')
+        color('salmon')
         order = int(input('Глубина: '))
         size = int(input('Длина стороны: '))
         up()
         goto(-100, 0)
         down()
         levi(order, size)
-        done()
 
     elif choice == '4':
+        color('teal')
         deep = int(input('Глубина: '))
         length = int(input('Длина стороны: '))
         minkowski(deep, length)
@@ -295,7 +318,6 @@ def main():
         goto(-100, 0)
         down()
         koch(deep, length)
-        done()
 
     elif choice == '6':
         color('mediumturquoise')
@@ -305,9 +327,9 @@ def main():
         goto(-100, 0)
         down()
         koch_snowflake(deep, length)
-        done()
 
     elif choice == '7':
+        color('royalblue')
         deep = int(input('Глубина: '))
         length = int(input('Длина стороны: '))
         up()
@@ -323,7 +345,6 @@ def main():
         goto(-length, 0)
         down()
         ice_1_snowflake(deep, length)
-        done()
 
     elif choice == '9':
         color('midnightblue')
@@ -333,17 +354,15 @@ def main():
         goto(-length, length)
         down()
         ice_1_snowflake_2(deep, length)
-        done()
 
     elif choice == '10':
-        color('midnightblue')
+        color('royalblue')
         deep = int(input('Глубина: '))
         length = int(input('Длина стороны: '))
         up()
         goto(-100, 0)
         down()
         ice_2(deep, length)
-        done()
 
     elif choice == '11':
         color('midnightblue')
@@ -353,7 +372,6 @@ def main():
         goto(-250, 50)
         down()
         ice_2_snowflake(deep, length)
-        done()
 
     elif choice == '12':
         color('midnightblue')
@@ -363,7 +381,6 @@ def main():
         goto(-250, 50)
         down()
         ice_2_snowflake_2(deep, length)
-        done()
 
 
 main()
