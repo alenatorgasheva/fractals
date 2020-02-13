@@ -1,46 +1,61 @@
 # Case - study #6
+# This program draws fractals.
+
 # Developers : Daniel A.         (%),
 #              Zemtseva A.       (%),
 #              Torgasheva A.     (%).
 
-# This program draws fractals.
-
 from turtle import *
 
 
-# Ветка
-def branch(size, n):
-    if n == 0:
+def branch(length, deep):
+    '''
+    Function, drawing a branch.
+    :param length: a length of the initial line
+    :param deep: a recursion depth
+    :return: None
+    '''
+    if deep == 0:
         left(180)
         return
 
-    for i in range(1, n + 1):
-        forward(size / (n + 1))
+    for i in range(1, deep + 1):
+        forward(length / (deep + 1))
         left(45)
-        branch(((size / (n + 1)) / 2) * (n - i), n - i)
+        branch(((length / (deep + 1)) / 2) * (deep - i), deep - i)
         left(90)
-        branch(((size / (n + 1)) / 2) * (n - i), n - i)
+        branch(((length / (deep + 1)) / 2) * (deep - i), deep - i)
         right(135)
 
-    forward(size / (n + 1))
+    forward(length / (deep + 1))
     left(180)
-    forward(size)
+    forward(length)
 
 
-# Двоичное дерево
-def tree(size, corner):
-    if size - size / 3 > 10:
-        forward(size)
+def tree(length, corner):
+    '''
+    Function, drawing a binary tree.
+    :param length: a length of the initial line
+    :param corner: a corner between the branches of tree
+    :return: None
+    '''
+    if length - length / 3 > 10:
+        forward(length)
         right(corner / 2)
-        tree(size - size / 3, corner)
+        tree(length - length / 3, corner)
         left(corner)
-        tree(size - size / 3, corner)
+        tree(length - length / 3, corner)
         right(corner / 2)
-        backward(size)
+        backward(length)
 
 
-# Кривая Коха
 def koch(deep, length):
+    '''
+    Function, drawing the Koch's curve.
+    :param deep: a recursion depth
+    :param length: a length of the initial line
+    :return: None
+    '''
     if deep == 0:
         forward(length)
     else:
@@ -53,8 +68,13 @@ def koch(deep, length):
         koch(deep - 1, length / 3)
 
 
-# Снежинка Коха
 def koch_snowflake(deep, length):
+    '''
+    Function, drawing a Koch's snowflake.
+    :param deep: a recursion depth
+    :param length: a length of the initial line
+    :return: None
+    '''
     if deep == 0:
         koch(deep, length / 3)
         left(120)
@@ -88,8 +108,13 @@ def koch_snowflake(deep, length):
         koch_snowflake(deep - 1, length / 3)
 
 
-# Кривая Минковского
 def minkowski(deep, length):
+    '''
+    Function, drawing a Minkowsky's curve.
+    :param deep: a recursion depth
+    :param length: a length of the initial line
+    :return: None
+    '''
     if deep == 0:
         forward(length)
     else:
@@ -108,8 +133,13 @@ def minkowski(deep, length):
         minkowski(deep - 1, length)
 
 
-# Ледяной фрактал 1
 def ice_1(deep, length):
+    '''
+    Function, drawing an ice fractal number 1.
+    :param deep: a recursion depth
+    :param length: a length of the initial line
+    :return: None
+    '''
     if deep == 0:
         forward(length)
     else:
@@ -126,8 +156,13 @@ def ice_1(deep, length):
         ice_1(deep - 1, length)
 
 
-# Ледяной фрактал 1, снежинка (1)
 def ice_1_snowflake_1(deep, length):
+    '''
+    Function, drawing a snowflake number 1 consisting of ice fractals number 1.
+    :param deep: a recursion depth
+    :param length: a length of the initial line
+    :return: None
+    '''
     right(180)
     ice_1(deep, length)
     right(180)
@@ -139,8 +174,13 @@ def ice_1_snowflake_1(deep, length):
         ice_1(deep, length)
 
 
-# Ледяной фрактал 1, снежинка (2)
 def ice_1_snowflake_2(deep, length):
+    '''
+    Function, drawing a snowflake number 2 consisting of ice fractals number 1.
+    :param deep: a recursion depth
+    :param length: a length of the initial line
+    :return: None
+    '''
     ice_1(deep, length)
     right(120)
     ice_1(deep, length)
@@ -154,8 +194,13 @@ def ice_1_snowflake_2(deep, length):
     ice_1(deep, length)
 
 
-# Ледяной фрактал 2
 def ice_2(deep, length):
+    '''
+    Function, drawing an ice fractal number 2.
+    :param deep: a recursion depth
+    :param length: a length of the initial line
+    :return: None
+    '''
     if deep == 0:
         forward(length)
     else:
@@ -168,8 +213,13 @@ def ice_2(deep, length):
         ice_2(deep - 1, length)
 
 
-# Ледяной фрактал 2, снежинка (1)
 def snowflake_2(deep, length):
+    '''
+    Function, drawing a snowflake number 1 consisting of ice fractals number 2.
+    :param deep: a recursion depth
+    :param length: a length of the initial line
+    :return: None
+    '''
     if deep == 0:
         forward(length)
     else:
@@ -212,8 +262,13 @@ def ice_2_snowflake(deep, length):
     snowflake_2(deep, length)
 
 
-# Ледяной фрактал 2, снежинка (2)
 def snowflake_2_2(deep, length):
+    '''
+    Function, drawing a snowflake number 2 consisting of ice fractals number 2.
+    :param deep: a recursion depth
+    :param length: a length of the initial line
+    :return: None
+    '''
     if deep == 0:
         forward(length)
     else:
@@ -244,8 +299,13 @@ def ice_2_snowflake_2(deep, length):
     snowflake_2_2(deep, length)
 
 
-# Кривая Леви
 def levi(order, size):
+    '''
+    Function, drawing a Levi's curve.
+    :param deep: a recursion depth
+    :param length: a length of the initial line
+    :return: None
+    '''
     if order == 0:
         forward(size)
     else:
@@ -279,7 +339,7 @@ def main():
         size = int(input('Длина ствола: '))
         corner = int(input('Угол: '))
         up()
-        goto(0, -size*1.5)
+        goto(0, -(size * 1.5))
         left(90)
         down()
         color('green')
@@ -296,22 +356,22 @@ def main():
         branch(size, n)
 
     elif choice == '3':
-        color('salmon')
+        color('red')
         order = int(input('Глубина: '))
         size = int(input('Длина стороны: '))
         up()
-        goto(-100, 0)
+        goto(-size, 0)
         down()
         levi(order, size)
 
     elif choice == '4':
-        color('teal')
+        color('deeppink')
         deep = int(input('Глубина: '))
         length = int(input('Длина стороны: '))
         minkowski(deep, length)
 
     elif choice == '5':
-        color('deepskyblue')
+        color('aqua')
         deep = int(input('Глубина: '))
         length = int(input('Длина стороны: '))
         up()
@@ -320,7 +380,7 @@ def main():
         koch(deep, length)
 
     elif choice == '6':
-        color('mediumturquoise')
+        color('aqua')
         deep = int(input('Глубина: '))
         length = int(input('Длина стороны: '))
         up()
@@ -338,7 +398,7 @@ def main():
         ice_1(deep, length)
 
     elif choice == '8':
-        color('midnightblue')
+        color('royalblue')
         deep = int(input('Глубина: '))
         length = int(input('Длина стороны: '))
         up()
@@ -347,7 +407,7 @@ def main():
         ice_1_snowflake(deep, length)
 
     elif choice == '9':
-        color('midnightblue')
+        color('royalblue')
         deep = int(input('Глубина: '))
         length = int(input('Длина стороны: '))
         up()
@@ -356,7 +416,7 @@ def main():
         ice_1_snowflake_2(deep, length)
 
     elif choice == '10':
-        color('royalblue')
+        color('indigo')
         deep = int(input('Глубина: '))
         length = int(input('Длина стороны: '))
         up()
@@ -365,7 +425,7 @@ def main():
         ice_2(deep, length)
 
     elif choice == '11':
-        color('midnightblue')
+        color('indigo')
         deep = int(input('Глубина: '))
         length = int(input('Длина стороны: '))
         up()
@@ -374,7 +434,7 @@ def main():
         ice_2_snowflake(deep, length)
 
     elif choice == '12':
-        color('midnightblue')
+        color('indigo')
         deep = int(input('Глубина: '))
         length = int(input('Длина стороны: '))
         up()
