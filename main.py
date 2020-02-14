@@ -83,8 +83,6 @@ def koch_snowflake(deep, length):
     right(120)
 
 
-
-
 def minkowski(deep, length):
     '''
     Function, drawing a Minkowsky's curve.
@@ -169,6 +167,7 @@ def ice_1_snowflake_2(deep, length):
     ice_1(deep, length)
     left(120)
     ice_1(deep, length)
+    left(180)
 
 
 def ice_2(deep, length):
@@ -277,7 +276,7 @@ def main():
         choice = input()
         print('-' * 50)
 
-        speed(100)
+        speed(9)
 
         if choice == '1':
             length = int(input(lc.TXT_TREE_LENGTH))
@@ -340,7 +339,7 @@ def main():
             deep = int(input(lc.TXT_DEEP))
             length = int(input(lc.TXT_LENGTH))
             up()
-            goto(-length / 2, 0)
+            goto(-length * 2 ** (deep - 1), 0)
             down()
             ice_1(deep, length)
 
@@ -351,7 +350,7 @@ def main():
             up()
             goto(-length, 0)
             down()
-            ice_1_snowflake(deep, length)
+            ice_1_snowflake_1(deep, length)
 
         elif choice == '9':
             color('royalblue')
@@ -367,7 +366,7 @@ def main():
             deep = int(input(lc.TXT_DEEP))
             length = int(input(lc.TXT_LENGTH))
             up()
-            goto(-100, 0)
+            goto(-length * 2 ** (deep - 1), 0)
             down()
             ice_2(deep, length)
 
@@ -376,7 +375,7 @@ def main():
             deep = int(input(lc.TXT_DEEP))
             length = int(input(lc.TXT_LENGTH))
             up()
-            goto(-250, 50)
+            goto(-length * 2, 0)
             down()
             ice_2_snowflake(deep, length)
 
@@ -385,9 +384,13 @@ def main():
             deep = int(input(lc.TXT_DEEP))
             length = int(input(lc.TXT_LENGTH))
             up()
-            goto(-250, 50)
+            goto(-length * 2, length * 2)
             down()
             ice_2_snowflake_2(deep, length)
+
+        else:
+            print('-' * 50)
+            print(lc.TXT_ERROR)
 
         print('-' * 50)
         print(lc.TXT_AGAIN)
