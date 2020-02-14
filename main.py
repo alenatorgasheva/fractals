@@ -3,7 +3,7 @@
 
 # Developers : Daniel A.         (40%),
 #              Zemtseva A.       (%),
-#              Torgasheva A.     (%).
+#              Torgasheva A.     (40%).
 
 from turtle import *
 
@@ -61,13 +61,13 @@ def koch(deep, length):
     if deep == 0:
         forward(length)
     else:
-        koch(deep - 1, length / 3)
+        koch(deep - 1, length / 2)
         left(60)
-        koch(deep - 1, length / 3)
+        koch(deep - 1, length / 2)
         right(120)
-        koch(deep - 1, length / 3)
+        koch(deep - 1, length / 2)
         left(60)
-        koch(deep - 1, length / 3)
+        koch(deep - 1, length / 2)
 
 
 def koch_snowflake(deep, length):
@@ -316,7 +316,7 @@ def main():
             deep = int(input(lc.TXT_DEEP))
             length = int(input(lc.TXT_LENGTH))
             up()
-            goto(-length ** 2, 0)
+            goto(-length * 2, 0)
             down()
             minkowski(deep, length)
 
@@ -325,7 +325,7 @@ def main():
             deep = int(input(lc.TXT_DEEP))
             length = int(input(lc.TXT_LENGTH))
             up()
-            goto(-length / 2, 0)
+            goto(-length * 2, 0)
             down()
             koch(deep, length)
 
@@ -334,7 +334,7 @@ def main():
             deep = int(input(lc.TXT_DEEP))
             length = int(input(lc.TXT_LENGTH))
             up()
-            goto(-100, 0)
+            goto(-length / 2, length / 2)
             down()
             koch_snowflake(deep, length)
 
@@ -405,7 +405,7 @@ def main():
         if choice == '1':
             clear()
         elif choice == '2':
-            break
+            exit()
 
 
 main()
