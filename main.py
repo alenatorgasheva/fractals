@@ -1,7 +1,7 @@
 # Case - study #6
 # This program draws fractals.
 
-# Developers : Daniel A.         (%),
+# Developers : Daniel A.         (40%),
 #              Zemtseva A.       (%),
 #              Torgasheva A.     (%).
 
@@ -47,6 +47,8 @@ def tree(length, corner):
         tree(length - length / 3, corner)
         right(corner / 2)
         backward(length)
+    else:
+        return
 
 
 def koch(deep, length):
@@ -93,19 +95,19 @@ def minkowski(deep, length):
     if deep == 0:
         forward(length)
     else:
-        minkowski(deep - 1, length)
+        minkowski(deep - 1, length / 2)
         left(90)
-        minkowski(deep - 1, length)
+        minkowski(deep - 1, length / 2)
+        right(90)
+        minkowski(deep - 1, length / 2)
         right(90)
         minkowski(deep - 1, length)
-        right(90)
-        minkowski(deep - 1, 2 * length)
         left(90)
-        minkowski(deep - 1, length)
+        minkowski(deep - 1, length / 2)
         left(90)
-        minkowski(deep - 1, length)
+        minkowski(deep - 1, length / 2)
         right(90)
-        minkowski(deep - 1, length)
+        minkowski(deep - 1, length / 2)
 
 
 def ice_1(deep, length):
@@ -287,6 +289,7 @@ def main():
             down()
             color('green')
             tree(length, angle)
+            right(90)
 
         elif choice == '2':
             length = int(input(lc.TXT_LENGTH))
@@ -297,6 +300,7 @@ def main():
             goto(0, -length / 3)
             down()
             branch(length, n)
+            left(90)
 
         elif choice == '3':
             color('red')
@@ -351,6 +355,7 @@ def main():
             goto(-length, 0)
             down()
             ice_1_snowflake_1(deep, length)
+            right(60)
 
         elif choice == '9':
             color('royalblue')
@@ -378,6 +383,7 @@ def main():
             goto(-length * 2, 0)
             down()
             ice_2_snowflake(deep, length)
+            right(180)
 
         elif choice == '12':
             color('indigo')
@@ -387,6 +393,7 @@ def main():
             goto(-length * 2, length * 2)
             down()
             ice_2_snowflake_2(deep, length)
+            right(180)
 
         else:
             print('-' * 50)
