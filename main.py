@@ -213,234 +213,212 @@ def ice_2(deep, length):
         ice_2(deep - 1, length)
 
 
-def snowflake_2(deep, length):
-    '''
-    Function, drawing a snowflake number 1 consisting of ice fractals number 2.
-    :param deep: a recursion depth
-    :param length: a length of the initial line
-    :return: None
-    '''
-    if deep == 0:
-        forward(length)
-    else:
-        snowflake_2(deep - 1, length)
-        left(90)
-        snowflake_2(deep - 1, length / 2)
-        left(180)
-        snowflake_2(deep - 1, length / 2)
-        left(90)
-        snowflake_2(deep - 1, length)
-
-
 def ice_2_snowflake(deep, length):
-    snowflake_2(deep, length)
-    snowflake_2(deep, length)
+    ice_2(deep, length)
+    ice_2(deep, length)
     right(180)
-    snowflake_2(deep, length)
+    ice_2(deep, length)
     right(45)
-    snowflake_2(deep, length)
+    ice_2(deep, length)
     right(180)
-    snowflake_2(deep, length)
-    snowflake_2(deep, length)
+    ice_2(deep, length)
+    ice_2(deep, length)
     right(180)
-    snowflake_2(deep, length)
+    ice_2(deep, length)
     right(90)
-    snowflake_2(deep, length)
+    ice_2(deep, length)
     right(180)
-    snowflake_2(deep, length)
-    snowflake_2(deep, length)
+    ice_2(deep, length)
+    ice_2(deep, length)
     right(180)
-    snowflake_2(deep, length)
+    ice_2(deep, length)
     left(45)
-    snowflake_2(deep, length)
+    ice_2(deep, length)
     right(180)
-    snowflake_2(deep, length)
-    snowflake_2(deep, length)
+    ice_2(deep, length)
+    ice_2(deep, length)
     right(180)
-    snowflake_2(deep, length)
+    ice_2(deep, length)
     left(90)
-    snowflake_2(deep, length)
-
-
-def snowflake_2_2(deep, length):
-    '''
-    Function, drawing a snowflake number 2 consisting of ice fractals number 2.
-    :param deep: a recursion depth
-    :param length: a length of the initial line
-    :return: None
-    '''
-    if deep == 0:
-        forward(length)
-    else:
-        snowflake_2_2(deep - 1, length)
-        left(90)
-        snowflake_2_2(deep - 1, length / 2)
-        left(180)
-        snowflake_2_2(deep - 1, length / 2)
-        left(90)
-        snowflake_2(deep - 1, length)
+    ice_2(deep, length)
 
 
 def ice_2_snowflake_2(deep, length):
-    snowflake_2_2(deep, length)
+    ice_2(deep, length)
     right(90)
-    snowflake_2_2(deep, length)
+    ice_2(deep, length)
     right(90)
-    snowflake_2_2(deep, length)
+    ice_2(deep, length)
     right(90)
-    snowflake_2_2(deep, length)
+    ice_2(deep, length)
     right(180)
-    snowflake_2_2(deep, length)
+    ice_2(deep, length)
     left(90)
-    snowflake_2_2(deep, length)
+    ice_2(deep, length)
     left(90)
-    snowflake_2_2(deep, length)
+    ice_2(deep, length)
     left(90)
-    snowflake_2_2(deep, length)
+    ice_2(deep, length)
 
 
-def levi(order, size):
+def levi(deep, length):
     '''
     Function, drawing a Levi's curve.
     :param deep: a recursion depth
     :param length: a length of the initial line
     :return: None
     '''
-    if order == 0:
-        forward(size)
+    if deep == 0:
+        forward(length)
     else:
         left(45)
-        levi(order - 1, size / 1.5)
+        levi(deep - 1, length / 1.5)
         right(90)
-        levi(order - 1, size / 1.5)
+        levi(deep - 1, length / 1.5)
         left(45)
 
 
 def main():
-    print('Выберите фигуру из списка.')
-    print('\t1 - двоичное дерево')
-    print('\t2 - ветка')
-    print('\t3 - кривая Леви')
-    print('\t4 - кривая Минковского')
-    print('\t5 - кривая Коха')
-    print('\t6 - снежинка Коха')
-    print('\t7 - ледяной фрактал 1')
-    print('\t8 - ледяной фрактал 1, снежинка (1)')
-    print('\t9 - ледяной фрактал 1, снежинка (2)')
-    print('\t10 - ледяной фрактал 2')
-    print('\t11 - ледяной фрактал 2, снежинка (1)')
-    print('\t12 - ледяной фрактал 2, снежинка (2)')
-    choice = input()
-    print('-' * 50)
+    # Choosing the language
+    language = input('Choose your language:\n1. English\n2. Russian\n').lower()
+    while True:
+        if language == 'english' or language == 'eng' or \
+                language == 'e' or language == '1':
+            import lc_eng as lc
+            break
+        elif language == 'russian' or language == 'rus' or \
+                language == 'r' or language == '2':
+            import lc_rus as lc
+            break
+        language = input('Please, choose language from proposed: ')
 
-    speed(100)
+    while True:
+        # Main menu
+        print('-' * 50)
+        print(lc.TXT_TASK)
+        print(lc.TXT_CHOICE)
+        choice = input()
+        print('-' * 50)
 
-    if choice == '1':
-        size = int(input('Длина ствола: '))
-        corner = int(input('Угол: '))
-        up()
-        goto(0, -(size * 1.5))
-        left(90)
-        down()
-        color('green')
-        tree(size, corner)
+        speed(100)
 
-    elif choice == '2':
-        size = int(input('Длина: '))
-        n = int(input('Глубина: '))
-        left(90)
-        color('sienna')
-        up()
-        goto(0, -size / 3)
-        down()
-        branch(size, n)
+        if choice == '1':
+            length = int(input(lc.TXT_TREE_LENGTH))
+            angle = int(input(lc.TXT_TREE_ANGLE))
+            up()
+            goto(0, -(length * 1.5))
+            left(90)
+            down()
+            color('green')
+            tree(length, angle)
 
-    elif choice == '3':
-        color('red')
-        order = int(input('Глубина: '))
-        size = int(input('Длина стороны: '))
-        up()
-        goto(-size, 0)
-        down()
-        levi(order, size)
+        elif choice == '2':
+            length = int(input(lc.TXT_LENGTH))
+            n = int(input(lc.TXT_DEEP))
+            left(90)
+            color('sienna')
+            up()
+            goto(0, -length / 3)
+            down()
+            branch(length, n)
 
-    elif choice == '4':
-        color('deeppink')
-        deep = int(input('Глубина: '))
-        length = int(input('Длина стороны: '))
-        minkowski(deep, length)
+        elif choice == '3':
+            color('red')
+            order = int(input(lc.TXT_DEEP))
+            length = int(input(lc.TXT_LENGTH))
+            up()
+            goto(-length, 0)
+            down()
+            levi(order, length)
 
-    elif choice == '5':
-        color('aqua')
-        deep = int(input('Глубина: '))
-        length = int(input('Длина стороны: '))
-        up()
-        goto(-100, 0)
-        down()
-        koch(deep, length)
+        elif choice == '4':
+            color('deeppink')
+            deep = int(input(lc.TXT_DEEP))
+            length = int(input(lc.TXT_LENGTH))
+            up()
+            goto(-length ** 2, 0)
+            down()
+            minkowski(deep, length)
 
-    elif choice == '6':
-        color('aqua')
-        deep = int(input('Глубина: '))
-        length = int(input('Длина стороны: '))
-        up()
-        goto(-100, 0)
-        down()
-        koch_snowflake(deep, length)
+        elif choice == '5':
+            color('aqua')
+            deep = int(input(lc.TXT_DEEP))
+            length = int(input(lc.TXT_LENGTH))
+            up()
+            goto(-length / 2, 0)
+            down()
+            koch(deep, length)
 
-    elif choice == '7':
-        color('royalblue')
-        deep = int(input('Глубина: '))
-        length = int(input('Длина стороны: '))
-        up()
-        goto(-length / 2, 0)
-        down()
-        ice_1(deep, length)
+        elif choice == '6':
+            color('aqua')
+            deep = int(input(lc.TXT_DEEP))
+            length = int(input(lc.TXT_LENGTH))
+            up()
+            goto(-100, 0)
+            down()
+            koch_snowflake(deep, length)
 
-    elif choice == '8':
-        color('royalblue')
-        deep = int(input('Глубина: '))
-        length = int(input('Длина стороны: '))
-        up()
-        goto(-length, 0)
-        down()
-        ice_1_snowflake(deep, length)
+        elif choice == '7':
+            color('royalblue')
+            deep = int(input(lc.TXT_DEEP))
+            length = int(input(lc.TXT_LENGTH))
+            up()
+            goto(-length / 2, 0)
+            down()
+            ice_1(deep, length)
 
-    elif choice == '9':
-        color('royalblue')
-        deep = int(input('Глубина: '))
-        length = int(input('Длина стороны: '))
-        up()
-        goto(-length, length)
-        down()
-        ice_1_snowflake_2(deep, length)
+        elif choice == '8':
+            color('royalblue')
+            deep = int(input(lc.TXT_DEEP))
+            length = int(input(lc.TXT_LENGTH))
+            up()
+            goto(-length, 0)
+            down()
+            ice_1_snowflake(deep, length)
 
-    elif choice == '10':
-        color('indigo')
-        deep = int(input('Глубина: '))
-        length = int(input('Длина стороны: '))
-        up()
-        goto(-100, 0)
-        down()
-        ice_2(deep, length)
+        elif choice == '9':
+            color('royalblue')
+            deep = int(input(lc.TXT_DEEP))
+            length = int(input(lc.TXT_LENGTH))
+            up()
+            goto(-length, length)
+            down()
+            ice_1_snowflake_2(deep, length)
 
-    elif choice == '11':
-        color('indigo')
-        deep = int(input('Глубина: '))
-        length = int(input('Длина стороны: '))
-        up()
-        goto(-250, 50)
-        down()
-        ice_2_snowflake(deep, length)
+        elif choice == '10':
+            color('indigo')
+            deep = int(input(lc.TXT_DEEP))
+            length = int(input(lc.TXT_LENGTH))
+            up()
+            goto(-100, 0)
+            down()
+            ice_2(deep, length)
 
-    elif choice == '12':
-        color('indigo')
-        deep = int(input('Глубина: '))
-        length = int(input('Длина стороны: '))
-        up()
-        goto(-250, 50)
-        down()
-        ice_2_snowflake_2(deep, length)
+        elif choice == '11':
+            color('indigo')
+            deep = int(input(lc.TXT_DEEP))
+            length = int(input(lc.TXT_LENGTH))
+            up()
+            goto(-250, 50)
+            down()
+            ice_2_snowflake(deep, length)
+
+        elif choice == '12':
+            color('indigo')
+            deep = int(input(lc.TXT_DEEP))
+            length = int(input(lc.TXT_LENGTH))
+            up()
+            goto(-250, 50)
+            down()
+            ice_2_snowflake_2(deep, length)
+
+        print('-' * 50)
+        print(lc.TXT_AGAIN)
+        choice = input()
+        if choice == '1':
+            clear()
+        elif choice == '2':
+            break
 
 
 main()
