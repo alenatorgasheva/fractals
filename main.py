@@ -75,37 +75,14 @@ def koch_snowflake(deep, length):
     :param length: a length of the initial line
     :return: None
     '''
-    if deep == 0:
-        koch(deep, length / 3)
-        left(120)
-        koch(deep, length / 3)
-        left(120)
-        koch(deep, length / 3)
-        left(120)
-    else:
-        koch_snowflake(deep - 1, length / 3)
-        left(60)
-        koch_snowflake(deep - 1, length / 3)
-        right(120)
-        koch_snowflake(deep - 1, length / 3)
-        left(60)
-        koch_snowflake(deep - 1, length / 3)
-        right(120)
-        koch_snowflake(deep - 1, length / 3)
-        left(60)
-        koch_snowflake(deep - 1, length / 3)
-        right(120)
-        koch_snowflake(deep - 1, length / 3)
-        left(60)
-        koch_snowflake(deep - 1, length / 3)
-        right(120)
-        koch_snowflake(deep - 1, length / 3)
-        left(60)
-        koch_snowflake(deep - 1, length / 3)
-        right(120)
-        koch_snowflake(deep - 1, length / 3)
-        left(60)
-        koch_snowflake(deep - 1, length / 3)
+    koch(deep, length / 3)
+    right(120)
+    koch(deep, length / 3)
+    right(120)
+    koch(deep, length / 3)
+    right(120)
+
+
 
 
 def minkowski(deep, length):
