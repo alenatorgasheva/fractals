@@ -2,7 +2,7 @@
 # This program draws fractals.
 
 # Developers : Daniel A.         (40%),
-#              Zemtseva A.       (%),
+#              Zemtseva A.       (37%),
 #              Torgasheva A.     (40%).
 
 from turtle import *
