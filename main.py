@@ -278,7 +278,7 @@ def main():
         choice = input()
         print('-' * 50)
 
-        speed(9)
+        speed(10)
 
         if choice == '1':
             length = int(input(lc.TXT_TREE_LENGTH))
